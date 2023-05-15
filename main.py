@@ -3,7 +3,6 @@ from flask import Flask, render_template, jsonify, request
 import mysql.connector
 
 
-
 # Retrieve the MySQL database credentials from environment variables
 mysql_host = os.environ.get('MYSQLHOST')
 mysql_user = os.environ.get('MYSQLUSER')
@@ -32,12 +31,9 @@ def index():
 
     if request.method == "POST":
 
-        if not request.form.get("symbol"):
-            return render_template("index.html")
-
         participant = request.form.get("participant")
 
-        query="""SELECT Events.event_name
+        query = """SELECT Events.event_name
                  FROM Participants
                  JOIN Participants_Events ON Participants.participant_id = Participants_Events.participant_id
                  JOIN Events ON Participants_Events.event_id = Events.event_id
@@ -47,9 +43,7 @@ def index():
 
         return render_template("events.html", events=events)
 
-    else:
-        return render_template("index.html")
-    
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
