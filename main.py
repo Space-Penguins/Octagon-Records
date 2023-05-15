@@ -10,7 +10,7 @@ connection = mysql.connector.connect(
     user='MYSQLUSER',
     password=password,
     database='MYSQLDATABASE',
-    port='MYSQLPORT'
+    port=int(os.environ.get('MYSQLPORT', 3306))
 )
 
 cursor = connection.curosr()
