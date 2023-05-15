@@ -43,7 +43,12 @@ def index():
         cursor.execute(query, (participant,))
         events = cursor.fetchall()
 
-        return render_template("events.html", events=events)
+        eventList = []
+
+        for event in events:
+            eventList.append(event[0])
+
+        return render_template("events.html", eventList=eventList)
 
     return render_template("index.html")
 
