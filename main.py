@@ -48,7 +48,7 @@ def index():
         for event in events:
             eventList.append(event[0])
 
-        return render_template("events.html", eventList=eventList)
+        return render_template("events.html", eventList=eventList, name=participant)
 
     return render_template("index.html")
 
