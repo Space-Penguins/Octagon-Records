@@ -26,19 +26,21 @@ cursor = connection.cursor()
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
 
     if request.method == "POST":
 
         participant = request.form.get("participant")
 
-        query = """SELECT Events.event_name
-                 FROM Participants
-                 JOIN Participants_Events ON Participants.participant_id = Participants_Events.participant_id
-                 JOIN Events ON Participants_Events.event_id = Events.event_id
-                 WHERE Participants.participant_name = 'Chuck Liddell';"""
-        cursor.execute(query)
+        query = """
+                SELECT Events.event_name
+                FROM Participants
+                JOIN Participants_Events ON Participants.participant_id = Participants_Events.participant_id
+                JOIN Events ON Participants_Events.event_id = Events.event_id
+                WHERE Participants.participant_name = %s;
+                """
+        cursor.execute(query, (participant,))
         events = cursor.fetchall()
 
         return render_template("events.html", events=events)
