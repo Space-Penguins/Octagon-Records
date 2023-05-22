@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, request
 import mysql.connector
 
 
