@@ -3,29 +3,20 @@ from flask import Flask, render_template, request, url_for
 import mysql.connector
 
 
-'''# Retrieve the MySQL database credentials from environment variables
+# Retrieve the MySQL database credentials from environment variables
 mysql_host = os.environ.get('MYSQLHOST')
 mysql_user = os.environ.get('MYSQLUSER')
 mysql_password = os.environ.get('MYSQLPASSWORD')
 mysql_database = os.environ.get('MYSQLDATABASE')
-mysql_port = int(os.environ.get('MYSQLPORT', 3306))'''
+mysql_port = int(os.environ.get('MYSQLPORT', 3306))
 
-'''# Connect to the MySQL database
+# Connect to the MySQL database
 connection = mysql.connector.connect(
     host=mysql_host,
     user=mysql_user,
     password=mysql_password,
     database=mysql_database,
     port=mysql_port
-)'''
-
-#Connect to the MySQL database
-connection = mysql.connector.connect(
-    host='containers-us-west-112.railway.app',
-    user='root',
-    password='NFFYh6wnJWVCi0bAmIX4',
-    database='railway',
-    port='6319'
 )
 
 # Create a cursor object to execute SQL queries
