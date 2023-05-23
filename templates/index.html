@@ -1,14 +1,33 @@
 {% extends "layout.html" %}
 
-{% block title %}
-    Quoted
-{% endblock %}
-
 {% block main %}
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <style>
+            .small-textarea{ 
+                margin: auto;
+                width: 500px;
+                text-align: left
+            }
+        </style>
+    </head>
     <div class="table-responsive">
         <form action="/" method="post">
             <input id="participant" name="participant" autofocus type="text">
             <button class="btn btn-primary" type="submit">Search</button>
         </form>
     </div>
+    <div class="small-textarea">
+        <p>
+            <br>
+            Ladies and gentlemen, fight enthusiasts from around the world, welcome to the ultimate octagonal portal of electrifying anticipation! Get ready to step into the virtual realm of raw combat mastery, where warriors collide and legends are forged. This is your chance to uncover the untamed legacy of every fearless fighter who has stepped foot inside the hallowed grounds of the UFC!<br>
+            <br>
+            Introducing "Octagon Records," the definitive online destination for discerning fans who crave the heart-pounding thrill of the UFC but desire more than just the final results. With our unrivaled database at your fingertips, you hold the power to unveil the adrenaline-soaked journey of your favorite fighters like never before.<br>
+            <br>
+            Immerse yourself in the awe-inspiring world of mixed martial arts as you embark on a quest to discover the UFC events where your chosen warrior has left their indelible mark. Whether it's the ferocious grappling skills of a jiu-jitsu specialist or the thunderous striking prowess of a knockout artist, "Octagon Records" is the ultimate haven for the true aficionado.<br>
+            <br>
+            Feel the rush of anticipation as you delve deep into the fight histories of these modern-day gladiators. Witness the evolution of their careers, from their earliest battles where dreams were born, to the grandest stages where championships were contested. The legacy of these courageous warriors unfolds before your very eyes, all without revealing the spine-tingling outcomes that keep us on the edge of our seats.
+        </p>
+    </div>
+
 {% endblock %}
