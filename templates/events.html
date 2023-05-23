@@ -1,9 +1,5 @@
 {% extends "layout.html" %}
 
-{% block title %}
-    Events
-{% endblock %}
-
 {% block main %}
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -47,7 +43,7 @@
         </form>
     </div>
     <div class="image-container">
-        <img src="{{ url_for('static', filename='images/ufc_logo.jpg') }}">
+        <img id="animated-images" src="" />
         <table class="overlay-table table-container">
             <thead>
                 <tr>
@@ -63,4 +59,23 @@
             </tbody>
         </table>
     </div>
+    <script>
+        const img = document.getElementById('animated-images');
+        const imageCount = 9;
+        let currentImage = 1;
+
+        function changeImage() {
+            img.src = "{{ url_for('static', filename='images/') }}" + currentImage + ".gif";
+            
+            currentImage++;
+            if (currentImage > imageCount) {
+                clearInterval(intervalId);
+                }
+            }
+
+        changeImage();
+
+        const intervalId = setInterval(changeImage, 20);
+
+    </script>
 {% endblock %}
