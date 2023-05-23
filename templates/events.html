@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Events
+{% endblock %}
+
+{% block main %}
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <style>
+            @keyframes expandTable {
+                0% {
+                    width: 0;
+                    transform: translateX(165px) scale(0);
+                }
+                100% {
+                    width: 100;
+                    translate: translateX(165px) scale(1);
+                }
+            }
+            .image-container {
+                position: relative;
+                display: inline-block;
+            }
+
+            .table-container{
+                background-color: white;
+                max-width: 270px;
+                overflow: hidden;
+                animation: expandTable 300ms linear forwards;
+                position: relative;
+            }
+        
+            .overlay-table {
+                width: 100%;
+                position: absolute;
+                top: 130px;
+                left: 165px;
+                transform-origin: -20px 20px;
+            }
+        </style>
+    </head>
+    <div class="table-responsive">
+        <form action="/" method="post">
+            <input id="participant" name="participant" autofocus type="text">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/ufc_logo.jpg') }}">
+        <table class="overlay-table table-container">
+            <thead>
+                <tr>
+                    <th> {{ name }} has fought in UFC event</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in eventList %}
+                    <tr>
+                        <td>{{ event }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
