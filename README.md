@@ -1,6 +1,8 @@
 # Octagon Records
 *UFC spoiler free*
 
+[Octagon Records](octagonrecords.up.railway.app)
+
 Octagon Records is a website where the user can look up a fighter’s carrier in UFC without getting the result of each match.
 
 ## datascrapping/UFC_figth_compiler.py
