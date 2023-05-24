@@ -2,7 +2,6 @@
 
 {% block main %}
     <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <style>
             @keyframes expandTable {
                 0% {
@@ -21,7 +20,7 @@
 
             .table-container{
                 background-color: white;
-                max-width: 270px;
+                /*max-width: 270px;*/
                 overflow: hidden;
                 animation: expandTable 300ms linear forwards;
                 position: relative;
@@ -30,9 +29,9 @@
             .overlay-table {
                 width: 100%;
                 position: absolute;
-                top: 130px;
-                left: 165px;
-                transform-origin: -20px 20px;
+                top: 21.6%;
+                left: 27.5%;
+                transform-origin: 0% 0%;
             }
         </style>
     </head>
@@ -43,7 +42,7 @@
         </form>
     </div>
     <div class="image-container">
-        <img id="animated-images" src="" />
+        <img class="center img-fluid" id="animated-images" src="" />
         <table class="overlay-table table-container">
             <thead>
                 <tr>
@@ -76,6 +75,18 @@
         changeImage();
 
         const intervalId = setInterval(changeImage, 20);
+        
+        function adjustTableWidth() {
+            const backgroundImage = document.getElementById('animated-images');
+            const tableContainer = document.querySelector('.table-container');
+            const imageWidth = backgroundImage.width;
 
+            tableContainer.style.width = 0.45 * imageWidth + 'px';
+            }
+
+        adjustTableWidth();
+
+        window.addEventListener('resize', adjustTableWidth);
+        window.onload = adjustTableWidth;
     </script>
 {% endblock %}
