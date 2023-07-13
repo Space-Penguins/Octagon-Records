@@ -6,7 +6,7 @@ import logging
 app = Flask(__name__)
 
 # Configure logging
-app.logger.setLevel(logging.WARNING)
+app.logger.setLevel(logging.DEBUG)
 stream_handler = logging.StreamHandler()
 app.logger.addHandler(stream_handler)
 
